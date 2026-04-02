@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: 'class' }
+  </script>
+</head>
+<body class="h-screen flex items-center justify-center">
+  <div class="text-center">
+    <div class="mb-4 p-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
+      <p class="text-gray-900 dark:text-white mb-2">测试文字</p>
+      <button onclick="document.documentElement.classList.toggle('dark')" class="px-4 py-2 bg-purple-600 text-white rounded">切换主题</button>
+    </div>
+    <p class="text-sm text-gray-500">当前html类: <span id="cls"></span></p>
+  </div>
+  <script>
+    setInterval(() => {
+      document.getElementById('cls').textContent = document.documentElement.className
+    }, 100)
+  </script>
+</body>
+</html>

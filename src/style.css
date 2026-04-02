@@ -1,0 +1,307 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* 编辑器主题色 - 亮色模式默认 */
+  --editor-bg: #f8fafc;
+  --editor-sidebar: #ffffff;
+  --editor-header: #ffffff;
+  --editor-border: #e2e8f0;
+  --editor-text: #475569;
+  --editor-text-muted: #94a3b8;
+  --editor-text-heading: #1e293b;
+  --editor-accent: #9333ea;
+  --editor-accent-light: #faf5ff;
+  --editor-accent-hover: #7c3aed;
+  --editor-success: #10b981;
+  --editor-success-light: #d1fae5;
+  --editor-warning: #f59e0b;
+  --editor-danger: #ef4444;
+  --editor-code-bg: #f1f5f9;
+  --editor-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --editor-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --editor-radius: 8px;
+  --editor-radius-sm: 4px;
+  --editor-radius-lg: 12px;
+
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--editor-text);
+  background: var(--editor-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 亮色模式 */
+:root.light {
+  --editor-bg: #f8fafc;
+  --editor-sidebar: #ffffff;
+  --editor-header: #ffffff;
+  --editor-border: #e2e8f0;
+  --editor-text: #475569;
+  --editor-text-muted: #94a3b8;
+  --editor-text-heading: #1e293b;
+  --editor-accent: #9333ea;
+  --editor-accent-light: #faf5ff;
+  --editor-accent-hover: #7c3aed;
+  --editor-success: #10b981;
+  --editor-success-light: #d1fae5;
+  --editor-warning: #f59e0b;
+  --editor-danger: #ef4444;
+  --editor-code-bg: #f1f5f9;
+  color-scheme: light;
+}
+
+/* 暗色模式 */
+:root.dark {
+  --editor-bg: #0f172a;
+  --editor-sidebar: #1e293b;
+  --editor-header: #1e293b;
+  --editor-border: #334155;
+  --editor-text: #cbd5e1;
+  --editor-text-muted: #64748b;
+  --editor-text-heading: #f1f5f9;
+  --editor-accent: #a855f7;
+  --editor-accent-light: #3b0764;
+  --editor-accent-hover: #c084fc;
+  --editor-success: #34d399;
+  --editor-success-light: #064e3b;
+  --editor-warning: #fbbf24;
+  --editor-danger: #f87171;
+  --editor-code-bg: #1e293b;
+  color-scheme: dark;
+}
+
+/* 默认跟随系统（无 class 时） */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light):not(.dark) {
+    --editor-bg: #0f172a;
+    --editor-sidebar: #1e293b;
+    --editor-header: #1e293b;
+    --editor-border: #334155;
+    --editor-text: #cbd5e1;
+    --editor-text-muted: #64748b;
+    --editor-text-heading: #f1f5f9;
+    --editor-accent: #a855f7;
+    --editor-accent-light: #3b0764;
+    --editor-accent-hover: #c084fc;
+    --editor-success: #34d399;
+    --editor-success-light: #064e3b;
+    --editor-warning: #fbbf24;
+    --editor-danger: #f87171;
+    --editor-code-bg: #1e293b;
+    color-scheme: dark;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: inherit;
+  font-weight: 600;
+  color: var(--editor-text-heading);
+  margin: 0;
+}
+
+h2 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--editor-text-muted);
+}
+
+h3 {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--editor-text-heading);
+}
+
+p {
+  margin: 0;
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--editor-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--editor-text-muted);
+}
+
+/* 工具类 */
+.panel-section {
+  background: var(--editor-sidebar);
+  border-radius: var(--editor-radius);
+  padding: 12px;
+  border: 1px solid var(--editor-border);
+}
+
+.panel-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--editor-text-muted);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: var(--editor-radius-sm);
+  border: 1px solid var(--editor-border);
+  background: var(--editor-sidebar);
+  color: var(--editor-text);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn:hover {
+  background: var(--editor-accent-light);
+  border-color: var(--editor-accent);
+  color: var(--editor-accent);
+}
+
+.btn-primary {
+  background: var(--editor-accent);
+  border-color: var(--editor-accent);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--editor-accent-hover);
+  border-color: var(--editor-accent-hover);
+  color: white;
+}
+
+.btn-success {
+  background: var(--editor-success);
+  border-color: var(--editor-success);
+  color: white;
+}
+
+.btn-success:hover {
+  opacity: 0.9;
+  background: var(--editor-success);
+  color: white;
+}
+
+.btn-sm {
+  padding: 6px 10px;
+  font-size: 12px;
+}
+
+.btn-icon {
+  padding: 6px;
+  border: none;
+  background: transparent;
+  border-radius: var(--editor-radius-sm);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  color: var(--editor-text-muted);
+}
+
+.btn-icon:hover {
+  background: var(--editor-accent-light);
+  color: var(--editor-accent);
+}
+
+.btn-icon:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* 表单控件 */
+.form-select {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 13px;
+  border: 1px solid var(--editor-border);
+  border-radius: var(--editor-radius-sm);
+  background: var(--editor-sidebar);
+  color: var(--editor-text);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.form-select:hover {
+  border-color: var(--editor-accent);
+}
+
+.form-select:focus {
+  outline: none;
+  border-color: var(--editor-accent);
+  box-shadow: 0 0 0 3px var(--editor-accent-light);
+}
+
+/* 代码块 */
+.code-block {
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  font-size: 12px;
+  background: var(--editor-code-bg);
+  padding: 10px 12px;
+  border-radius: var(--editor-radius-sm);
+  border: 1px solid var(--editor-border);
+  overflow-x: auto;
+}
+
+/* 画布网格背景 */
+.canvas-grid {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* 暗色模式网格 */
+:root.dark .canvas-grid {
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.03) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+/* 系统暗色模式网格 */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light):not(.dark) .canvas-grid {
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.03) 1px,
+        transparent 1px
+      ),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  }
+}
