@@ -100,15 +100,13 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed } from "vue";
 import { editorStore } from "@/store/editor";
 import type { EditorNode, DropPosition } from "@/store/editor";
 
 const props = defineProps<{
   node: EditorNode;
 }>();
-
-const nodeRef = ref<HTMLElement | null>(null);
 
 const isSelected = computed(() => editorStore.selectedId === props.node.id);
 const isThisDragging = computed(() => editorStore.dragNodeId === props.node.id);
@@ -143,10 +141,6 @@ const showDropIndicator = computed(() => {
 
 function selectNode() {
   editorStore.selectedId = props.node.id;
-}
-
-function deleteNode() {
-  editorStore.deleteNode(props.node.id);
 }
 
 function onDragStart(e: DragEvent) {

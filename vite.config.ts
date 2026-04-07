@@ -3,7 +3,7 @@ import vue from "@vitejs/plugin-vue";
 import path from "path";
 
 export default defineConfig({
-  base: "/Tailwind-Editor/",
+  base: "/tailwind-editor/",
   plugins: [vue()],
   resolve: {
     alias: {
